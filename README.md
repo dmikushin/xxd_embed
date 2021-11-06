@@ -46,3 +46,9 @@ int main(int argc, char* argv[])
 }
 ```
 
+## Credits
+
+This code uses the original public domain `xxd` utility, which is
+
+(c) 1990-1998 by Juergen Weigert
+
