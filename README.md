@@ -13,7 +13,7 @@ git submodule add https://github.com/dmikushin/xxd.git
 
 2. Integrate xxd project into your `CMakeLists.txt`:
 
-``` 
+```cmake 
 add_subdirectory(some/path/xxd)
 ```
 
@@ -24,7 +24,7 @@ $ cat resource
 Hello, world!
 ```
 
-```
+```cmake
 set(SRCS "example.cpp")
 xxd_embed(${CMAKE_CURRENT_SOURCE_DIR}/resource SRCS)
 
