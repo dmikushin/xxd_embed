@@ -34,7 +34,7 @@ target_link_libraries(example xxd::xxd)
 
 4. Use the embedded resource in your program:
 
-```
+```c++
 #include "xxd.h"
 
 #include <cstdio>
