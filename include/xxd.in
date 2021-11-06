@@ -14,7 +14,7 @@ using namespace std;
 
 // Note: xxd provides us with unsigned char data, so we initialize it this way
 // and then cast to signed char for easiness.
-static const unsigned char hex_content[] = { @CONTENT_HEX@ };
+static const unsigned char hex_content[] = { @CONTENT_HEX@, 0 };
 
 class AddFile_@FILE_NAME_HASH@
 {

@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.1)
 
 project(xxd)
 
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 add_executable(xxd ${CMAKE_CURRENT_SOURCE_DIR}/src/xxd.c)
 
 add_library(libxxd SHARED ${CMAKE_CURRENT_SOURCE_DIR}/src/xxd.cpp)
@@ -47,10 +50,10 @@ macro(add_header_file FILE_PATH SOURCES)
 
 	# Translate content into comma-separated byte codes.
 	set(EMBED_FILE_PATH "${CMAKE_CURRENT_BINARY_DIR}/${FILE_NAME}.h")
-    add_custom_command(
-        OUTPUT ${EMBED_FILE_PATH}
-        COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_BINARY_DIR}"
-        COMMAND $<TARGET_FILE:xxd> -i < ${FILE_PATH} > ${EMBED_FILE_PATH}
+	add_custom_command(
+		OUTPUT ${EMBED_FILE_PATH}
+		COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_BINARY_DIR}"
+		COMMAND $<TARGET_FILE:xxd> -i < ${FILE_PATH} > ${EMBED_FILE_PATH}
 		COMMENT "Embedding file ${FILE_PATH}"
 		DEPENDS ${FILE_PATH} xxd)
 	set_source_files_properties("${EMBED_FILE_PATH}" PROPERTIES GENERATED TRUE) 
@@ -59,3 +62,4 @@ macro(add_header_file FILE_PATH SOURCES)
 	message(STATUS "Header file ${EMBED_FILE_PATH} shall be added to ${SOURCES}")
 endmacro()
 
+add_subdirectory(example)
