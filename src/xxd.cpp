@@ -24,6 +24,14 @@ void xxd::add(const string& name, const char* content, size_t size, const string
 
 const char* xxd::get(const string& name, size_t* size, string* mime)
 {
+	if (!index.get())
+	{
+		fprintf(stderr, "The resources index maintained by XXD is not [yet] initialized\n"
+			"Perhaps, the resource load is attempted by a static object, which is initialized earlier than the XXD index\n"
+			"Please make sure this is not the case\n");
+		return nullptr;
+	}
+
 	auto it = index->find(name);
 	if (it == index->end()) return nullptr;
 
