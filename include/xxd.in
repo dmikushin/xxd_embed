@@ -12,6 +12,8 @@
 
 using namespace std;
 
+namespace {
+
 // Note: xxd provides us with unsigned char data, so we initialize it this way
 // and then cast to signed char for easiness.
 static const unsigned char hex_content[] = { @CONTENT_HEX@, 0 };
@@ -24,17 +26,11 @@ public :
 
 	AddFile_@FILE_NAME_HASH@() : file_name("@FILE_NAME@")
 	{
-		if (!xxd.get())
-			xxd.reset(new map<string, pair<const char*, size_t> >());
-
-		xxd->emplace(file_name, std::make_pair(reinterpret_cast<const char*>(&hex_content[0]), sizeof(hex_content)));
-
-		if (!xxd_mime.get())
-			xxd_mime.reset(new map<string, string>());
-		
-		xxd_mime->emplace(file_name, STR(@FILE_MIME@));
+		xxd::add(file_name, reinterpret_cast<const char*>(&hex_content[0]), sizeof(hex_content), STR(@FILE_MIME@));
 	};
 };
+
+} // namespace
 
 static AddFile_@FILE_NAME_HASH@ addFile_@FILE_NAME_HASH@;
 

@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[])
 {
-	printf("%s", (*xxd)["resource"].first);
+	printf("%s", xxd::get("resource"));
 	return 0;
 }
 
