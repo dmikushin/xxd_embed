@@ -18,19 +18,19 @@ namespace {
 // and then cast to signed char for easiness.
 static const unsigned char hex_content[] = { @CONTENT_HEX@, 0 };
 
-class AddFile_@FILE_NAME_HASH@
+class AddFile_@FILE_KEY_HASH@
 {
-	const char* file_name;
+	const char* file_key;
 
 public :
 
-	AddFile_@FILE_NAME_HASH@() : file_name("@FILE_NAME@")
+	AddFile_@FILE_KEY_HASH@() : file_key("@FILE_KEY@")
 	{
-		xxd::add(file_name, reinterpret_cast<const char*>(&hex_content[0]), sizeof(hex_content), STR(@FILE_MIME@));
+		xxd::add(file_key, reinterpret_cast<const char*>(&hex_content[0]), sizeof(hex_content), STR(@FILE_MIME@));
 	};
 };
 
 } // namespace
 
-static AddFile_@FILE_NAME_HASH@ addFile_@FILE_NAME_HASH@;
+static AddFile_@FILE_KEY_HASH@ addFile_@FILE_KEY_HASH@;
 

@@ -14,17 +14,17 @@ static unique_ptr<map<string, tuple<const char*, size_t, string> > > index;
 
 } // namespace xxd
 
-void xxd::add(const string& filename, const char* content, size_t size, const string& mime)
+void xxd::add(const string& name, const char* content, size_t size, const string& mime)
 {
 	if (!index.get())
 		index.reset(new map<string, tuple<const char*, size_t, string> >());
 
-	index->emplace(filename, std::make_tuple(content, size, mime));
+	index->emplace(name, std::make_tuple(content, size, mime));
 }
 
-const char* xxd::get(const string& filename, size_t* size, string* mime)
+const char* xxd::get(const string& name, size_t* size, string* mime)
 {
-	auto it = index->find(filename);
+	auto it = index->find(name);
 	if (it == index->end()) return nullptr;
 
 	auto& result = it->second;
