@@ -26,7 +26,7 @@ public :
 
 	AddFile_@FILE_KEY_HASH@() : file_key("@FILE_KEY@")
 	{
-		xxd::add(file_key, reinterpret_cast<const char*>(&hex_content[0]), sizeof(hex_content), STR(@FILE_MIME@));
+		xxd::add(file_key, reinterpret_cast<const char*>(&hex_content[0]), sizeof(hex_content) - 1, STR(@FILE_MIME@));
 	};
 };
 
