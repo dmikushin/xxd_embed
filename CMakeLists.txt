@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(xxd ${CMAKE_CURRENT_SOURCE_DIR}/src/xxd.c)
 
 add_library(libxxd SHARED ${CMAKE_CURRENT_SOURCE_DIR}/src/xxd.cpp)
+set_property(TARGET libxxd PROPERTY CXX_STANDARD 11)
 target_include_directories(libxxd PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set_target_properties(libxxd PROPERTIES OUTPUT_NAME xxd)
 add_library(xxd::xxd ALIAS libxxd)
